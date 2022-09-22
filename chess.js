@@ -1,4 +1,4 @@
-function canMove(element, source, destination) {
+function canMove(element, source, destination, colour) {
     board_array = {
         "A8": 0, "B8": 8, "C8": 16, "D8": 24, "E8": 32, "F8": 40, "G8": 48, "H8": 56,
         "A7": 1, "B7": 9, "C7": 17, "D7": 25, "E7": 33, "F7": 41, "G7": 49, "H7": 57,
@@ -91,15 +91,28 @@ function canMove(element, source, destination) {
             if (v2 > 8 || v3 > 8) {
                 throw new Error('Chess board is 8*8');
             } else {
-                if (v2 > 1) {
-                    if ((v1 && (v3 - v2 == 1)) || ((v3 - v2 == 2) && v2 == 2)) {
-                        return true
+                if (colour == 'white') {
+                    if (v2 > 1) {
+                        if ((v1 && (v3 - v2 == 1)) || ((v3 - v2 == 2) && v2 == 2)) {
+                            return true
+                        } else {
+                            return false;
+                        }
                     } else {
-                        return false;
+                        throw new Error('The white Pawn should start from the second row');
                     }
-                } else {
-                    throw new Error('The Pawn should start from the second row');
+                } else if (colour == 'Black') {
+                    if (v2 < 8) {
+                        if ((v1 && (v2 - v3 == 1)) || ((v2 - v3 == 2) && v2 == 7)) {
+                            return true
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        throw new Error('The black Pawn should start from the seventh row');
+                    }
                 }
+
             }
 
 
