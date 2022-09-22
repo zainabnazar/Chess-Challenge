@@ -1,0 +1,14 @@
+{
+  "name": "chessjs",
+  "version": "1.0.0",
+  "description": "Chess",
+  "main": "chess.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Zainab",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.0.3"
+  }
+}
